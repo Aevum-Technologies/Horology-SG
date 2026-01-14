@@ -122,7 +122,9 @@ const CTA = () => {
               </div>
               <h4 className="font-serif text-lg mb-2">Visit Us</h4>
               <p className="text-muted-foreground text-sm">
-                Singapore
+                400 Orchard Rd<br />
+                #03-26 Orchard Tower<br />
+                Singapore 238875
               </p>
             </div>
 
@@ -144,6 +146,28 @@ const CTA = () => {
               <p className="text-muted-foreground text-sm">
                 Book a Consultation
               </p>
+            </div>
+          </motion.div>
+
+          {/* Google Map */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mt-12"
+          >
+            <div className="w-full h-[400px] rounded-lg overflow-hidden border border-border shadow-lg">
+              <iframe
+                src="https://maps.google.com/maps?q=400+Orchard+Rd,+Orchard+Towers,+Singapore+238875&t=&z=17&ie=UTF8&iwloc=B&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Horology-SG Location - 400 Orchard Rd, Orchard Towers"
+              />
             </div>
           </motion.div>
         </div>

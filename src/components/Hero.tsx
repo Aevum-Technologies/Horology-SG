@@ -4,7 +4,7 @@ const Hero = () => {
     return (
         <section className="relative min-h-[80vh] flex flex-col items-center justify-center overflow-hidden bg-background">
             {/* Ambient Background Glow */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_800px_at_center,_var(--tw-gradient-stops))] from-white/40 via-background to-background" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_700px_at_center,_var(--tw-gradient-stops))] from-white via-background to-background" />
 
             {/* Animated Logo Container */}
             <motion.div
