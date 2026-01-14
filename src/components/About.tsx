@@ -23,7 +23,7 @@ const About = () => {
             Where Precision Meets Passion
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Step inside our workshop—a sanctuary where traditional craftsmanship meets 
+            Step inside our workshop—a sanctuary where traditional craftsmanship meets
             modern technology to deliver exceptional results.
           </p>
         </motion.div>
@@ -105,7 +105,7 @@ const About = () => {
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
             <div className="absolute bottom-6 left-6">
-              <p className="text-primary text-sm tracking-widest uppercase mb-1">Our People</p>
+              <p className="text-primary text-sm tracking-widest uppercase mb-1">The Classroom</p>
               <h3 className="text-xl font-serif">The Team</h3>
             </div>
           </motion.div>
