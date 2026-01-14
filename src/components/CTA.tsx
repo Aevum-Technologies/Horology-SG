@@ -2,18 +2,29 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Phone, Clock } from "lucide-react";
 
 const CTA = () => {
-  const [email, setEmail] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    problem: "",
+  });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
+    if (formData.name && formData.email && formData.phone && formData.problem) {
       setIsSubmitted(true);
-      setEmail("");
+      setFormData({ name: "", email: "", phone: "", problem: "" });
     }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   return (
@@ -39,32 +50,60 @@ const CTA = () => {
               Ready to Entrust Your Timepiece?
             </h2>
             <p className="text-muted-foreground max-w-xl mx-auto text-lg mb-10">
-              Schedule a consultation with our master watchmakers or join our 
-              community for exclusive horological insights.
+              Tell us about your watch and how we can help. Our master watchmakers are ready to assist.
             </p>
 
-            {/* Email Capture */}
+            {/* Contact Form */}
             {!isSubmitted ? (
-              <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+              <form onSubmit={handleSubmit} className="flex flex-col gap-4 max-w-lg mx-auto bg-background/50 p-6 rounded-lg border border-border/50 backdrop-blur-sm">
                 <Input
-                  type="email"
-                  placeholder="Your email address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  name="name"
+                  placeholder="Your Name"
+                  value={formData.name}
+                  onChange={handleChange}
                   required
-                  className="flex-1 h-14 bg-background border-border text-foreground placeholder:text-muted-foreground focus:border-primary"
+                  className="bg-background border-border text-foreground placeholder:text-muted-foreground focus:border-primary"
                 />
-                <Button type="submit" variant="gold" size="xl">
-                  Join Us
+                <Input
+                  name="email"
+                  type="email"
+                  placeholder="Your Email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="bg-background border-border text-foreground placeholder:text-muted-foreground focus:border-primary"
+                />
+                <Input
+                  name="phone"
+                  type="tel"
+                  placeholder="Your Phone Number"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
+                  className="bg-background border-border text-foreground placeholder:text-muted-foreground focus:border-primary"
+                />
+                <Textarea
+                  name="problem"
+                  placeholder="Describe your issue or request..."
+                  value={formData.problem}
+                  onChange={handleChange}
+                  required
+                  className="bg-background border-border text-foreground placeholder:text-muted-foreground focus:border-primary min-h-[120px]"
+                />
+                <Button type="submit" variant="gold" size="xl" className="w-full">
+                  Submit Inquiry
                 </Button>
               </form>
             ) : (
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="bg-background border border-primary/30 rounded-lg p-6 max-w-md mx-auto"
+                className="bg-background border border-primary/30 rounded-lg p-8 max-w-md mx-auto"
               >
-                <p className="text-primary font-serif text-xl">Welcome to the Community</p>
+                <p className="text-primary font-serif text-xl mb-2">Inquiry Received</p>
+                <p className="text-muted-foreground">
+                  Thank you for reaching out. We will review your request and contact you shortly.
+                </p>
               </motion.div>
             )}
           </motion.div>
