@@ -100,13 +100,13 @@ const About = () => {
           >
             <img
               src={teamImage}
-              alt="Singapore Horology Team"
+              alt="Watch Making Class"
               className="w-full h-72 md:h-96 object-cover transition-transform duration-700 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
             <div className="absolute bottom-6 left-6">
               <p className="text-primary text-sm tracking-widest uppercase mb-1">The Classroom</p>
-              <h3 className="text-xl font-serif">The Team</h3>
+              <h3 className="text-xl font-serif">Watch Classes</h3>
             </div>
           </motion.div>
         </div>
