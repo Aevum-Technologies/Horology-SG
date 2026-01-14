@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import heroImage from "@/assets/hero-watch.jpg";
-import logo from "@/assets/logo.jpeg";
 
 const Hero = () => {
   const [email, setEmail] = useState("");
@@ -33,18 +32,19 @@ const Hero = () => {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-6 py-20">
         <div className="max-w-2xl">
-          {/* Logo */}
+          {/* Logo Text */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="mb-8"
           >
-            <img
-              src={logo}
-              alt="Singapore Horology"
-              className="h-20 w-auto brightness-0 invert"
-            />
+            <h2 className="text-2xl md:text-3xl font-sans font-semibold tracking-[0.15em] text-foreground">
+              SINGAPORE
+            </h2>
+            <p className="text-lg md:text-xl font-sans tracking-[0.4em] text-muted-foreground">
+              HOROLOGY
+            </p>
           </motion.div>
 
           {/* Tagline */}
