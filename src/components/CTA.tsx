@@ -1,31 +1,10 @@
-import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { MapPin, Phone, Clock } from "lucide-react";
+import { MapPin, Phone, Clock, MessageCircle } from "lucide-react";
 
 const CTA = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    problem: "",
-  });
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (formData.name && formData.email && formData.phone && formData.problem) {
-      setIsSubmitted(true);
-      setFormData({ name: "", email: "", phone: "", problem: "" });
-    }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
+  const whatsappNumber = "+6580808870";
+  const whatsappLink = `https://wa.me/${whatsappNumber.replace(/\+/g, "")}`;
 
   return (
     <section className="py-24 bg-card relative overflow-hidden">
@@ -50,62 +29,36 @@ const CTA = () => {
               Ready to Entrust Your Timepiece?
             </h2>
             <p className="text-muted-foreground max-w-xl mx-auto text-lg mb-10">
-              Tell us about your watch and how we can help. Our master watchmakers are ready to assist.
+              Chat with us on WhatsApp. Our master watchmakers are ready to assist.
             </p>
 
-            {/* Contact Form */}
-            {!isSubmitted ? (
-              <form onSubmit={handleSubmit} className="flex flex-col gap-4 max-w-lg mx-auto bg-background/50 p-6 rounded-lg border border-border/50 backdrop-blur-sm">
-                <Input
-                  name="name"
-                  placeholder="Your Name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="bg-background border-border text-foreground placeholder:text-muted-foreground focus:border-primary"
-                />
-                <Input
-                  name="email"
-                  type="email"
-                  placeholder="Your Email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="bg-background border-border text-foreground placeholder:text-muted-foreground focus:border-primary"
-                />
-                <Input
-                  name="phone"
-                  type="tel"
-                  placeholder="Your Phone Number"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  required
-                  className="bg-background border-border text-foreground placeholder:text-muted-foreground focus:border-primary"
-                />
-                <Textarea
-                  name="problem"
-                  placeholder="Describe your issue or request..."
-                  value={formData.problem}
-                  onChange={handleChange}
-                  required
-                  className="bg-background border-border text-foreground placeholder:text-muted-foreground focus:border-primary min-h-[120px]"
-                />
-                <Button type="submit" variant="gold" size="xl" className="w-full">
-                  Submit Inquiry
-                </Button>
-              </form>
-            ) : (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="bg-background border border-primary/30 rounded-lg p-8 max-w-md mx-auto"
+            {/* WhatsApp Button */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <Button
+                asChild
+                variant="gold"
+                size="xl"
+                className="group"
               >
-                <p className="text-primary font-serif text-xl mb-2">Inquiry Received</p>
-                <p className="text-muted-foreground">
-                  Thank you for reaching out. We will review your request and contact you shortly.
-                </p>
-              </motion.div>
-            )}
+                <a
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3"
+                >
+                  <MessageCircle className="w-5 h-5 group-hover:scale-110 transition-transform" />
+                  Chat on WhatsApp
+                </a>
+              </Button>
+              <p className="text-muted-foreground text-sm mt-4">
+                {whatsappNumber}
+              </p>
+            </motion.div>
           </motion.div>
 
           {/* Contact Info */}
